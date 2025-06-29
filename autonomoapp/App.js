@@ -5,6 +5,7 @@ import { AuthProvider, AuthContext } from './src/context/AuthContext';
 import LoginScreen from './src/screens/LoginScreen';
 import HomeScreen from './src/screens/HomeScreen';
 import ServiceForm from './src/screens/ServiceForm';
+import ClientForm from './src/screens/ClientForm';
 import { TouchableOpacity, Text } from 'react-native';
 
 const Stack = createNativeStackNavigator();
@@ -25,12 +26,14 @@ const AppNavigator = () => {
           name="ServiceForm" 
           component={ServiceForm}
           options={({ navigation }) => ({
-            title: 'Cadastro de Serviço',
-            headerLeft: () => (
-              <TouchableOpacity onPress={() => navigation.navigate('Home')} style={{ marginLeft: 10 }}>
-                <Text style={{ color: '#2e7d32', fontSize: 16 }}>Voltar</Text>
-              </TouchableOpacity>
-            ),
+            title: 'Cadastro de Serviço'
+          })}
+        />
+        <Stack.Screen
+          name="ClientForm"
+          component={ClientForm}
+          options={({ navigation }) => ({
+            title: 'Cadastro de Cliente'
           })}
         />
       </>
