@@ -154,7 +154,13 @@ export default function HomeScreen() {
             <TouchableOpacity
               key={action.label}
               style={styles.actionCardExtra}
-              onPress={() => alert(`Funcionalidade ainda não implementada!`)}
+              onPress={() => {
+                if (action.label === 'Agenda') {
+                  navigation.navigate('AgendamentoForm')
+                } else {
+                  alert('Funcionalidade ainda não implementada!')
+                }
+              }}
               accessibilityLabel={`Opção extra: ${action.label}`}
             >
               <MaterialIcons name={action.icon} size={28} color="#2e7d32" style={{ marginBottom: 6 }} />
