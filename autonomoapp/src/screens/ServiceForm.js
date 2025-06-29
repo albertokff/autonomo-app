@@ -65,10 +65,6 @@ export default function ServiceForm({ navigation }) {
       />
 
       <View style={styles.buttonsContainer}>
-        <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
-          <Text style={styles.backButtonText}>Voltar</Text>
-        </TouchableOpacity>
-
         <TouchableOpacity style={styles.saveButton} onPress={handleSave}>
           <Text style={styles.saveButtonText}>Salvar</Text>
         </TouchableOpacity>

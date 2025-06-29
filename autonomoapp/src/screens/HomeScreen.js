@@ -22,21 +22,18 @@ const feelings = [
   { emoji: '😡', label: 'Irritado' },
 ];
 
-// Cards originais (ex: Agendamentos etc)
 const dashboardCards = [
   { label: 'Agenda', value: '12' },
   { label: 'Atendidos', value: '5' },
   { label: 'Faturamento', value: 'R$ 2.340,00' },
 ];
 
-// Cards principais de ações (originais)
 const mainActions = [
   { label: 'Novo Serviço', icon: 'add-box' },
   { label: 'Novo Cliente', icon: 'person-add' },
   { label: 'Pendências', icon: 'error-outline' },
 ];
 
-// Novas funcionalidades extras que você pediu, com ícones MaterialIcons
 const extraActions = [
   { label: 'Agenda', icon: 'event' },
   { label: 'Relatórios', icon: 'bar-chart' },
@@ -79,7 +76,11 @@ export default function HomeScreen() {
     <View style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
-        <TouchableOpacity onPress={() => setSidebarVisible(true)} style={styles.menuButton}>
+        <TouchableOpacity
+          onPress={() => setSidebarVisible(true)}
+          style={styles.menuButton}
+          accessibilityLabel="Abrir menu lateral"
+        >
           <Text style={styles.menuText}>☰</Text>
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Dashboard</Text>
@@ -92,7 +93,11 @@ export default function HomeScreen() {
         {/* Cards do dashboard */}
         <View style={styles.cardsContainer}>
           {dashboardCards.map((card) => (
-            <View key={card.label} style={styles.card}>
+            <View
+              key={card.label}
+              style={styles.card}
+              accessibilityLabel={`${card.label}: ${card.value}`}
+            >
               <Text style={styles.cardTitle}>{card.label}</Text>
               <Text style={styles.cardValue}>{card.value}</Text>
             </View>
@@ -111,6 +116,7 @@ export default function HomeScreen() {
                   selectedFeeling?.label === feeling.label && styles.emojiSelected,
                 ]}
                 onPress={() => setSelectedFeeling(feeling)}
+                accessibilityLabel={`Sentimento: ${feeling.label}`}
               >
                 <Text style={styles.emoji}>{feeling.emoji}</Text>
               </TouchableOpacity>
@@ -130,9 +136,10 @@ export default function HomeScreen() {
                 } else if (action.label === 'Novo Cliente') {
                   navigation.navigate('ClientForm');
                 } else {
-                  alert(action.label);
+                  alert('Funcionalidade ainda não implementada!');
                 }
               }}
+              accessibilityLabel={`Ação principal: ${action.label}`}
             >
               <MaterialIcons name={action.icon} size={30} color="#fff" style={{ marginBottom: 8 }} />
               <Text style={styles.actionCardText}>{action.label}</Text>
@@ -147,7 +154,8 @@ export default function HomeScreen() {
             <TouchableOpacity
               key={action.label}
               style={styles.actionCardExtra}
-              onPress={() => alert(`Você clicou em ${action.label}`)}
+              onPress={() => alert(`Funcionalidade ainda não implementada!`)}
+              accessibilityLabel={`Opção extra: ${action.label}`}
             >
               <MaterialIcons name={action.icon} size={28} color="#2e7d32" style={{ marginBottom: 6 }} />
               <Text style={styles.actionCardTextExtra}>{action.label}</Text>
@@ -163,17 +171,52 @@ export default function HomeScreen() {
         animationType="none"
         onRequestClose={closeSidebar}
       >
-        <TouchableOpacity style={styles.modalOverlay} activeOpacity={1} onPressOut={closeSidebar}>
+        <TouchableOpacity
+          style={styles.modalOverlay}
+          activeOpacity={1}
+          onPressOut={closeSidebar}
+          accessibilityLabel="Fechar menu lateral"
+        >
           <Animated.View style={[styles.sidebar, { left: slideAnim }]}>
             <Text style={styles.sidebarTitle}>Menu</Text>
-            <TouchableOpacity style={styles.sidebarItem} onPress={closeSidebar}>
+            <TouchableOpacity style={styles.sidebarItem} onPress={closeSidebar} accessibilityLabel="Ir para Dashboard">
               <Text style={styles.sidebarText}>Dashboard</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.sidebarItem} onPress={closeSidebar}>
+            <TouchableOpacity style={styles.sidebarItem} onPress={closeSidebar} accessibilityLabel="Ir para Meus Serviços">
               <Text style={styles.sidebarText}>Meus Serviços</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.sidebarItem} onPress={closeSidebar}>
+            <TouchableOpacity style={styles.sidebarItem} onPress={closeSidebar} accessibilityLabel="Ir para Perfil">
               <Text style={styles.sidebarText}>Perfil</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.sidebarItem} onPress={closeSidebar} accessibilityLabel="Ir para Agenda">
+              <Text style={styles.sidebarText}>Agenda</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.sidebarItem} onPress={closeSidebar} accessibilityLabel="Ir para Relatórios">
+              <Text style={styles.sidebarText}>Relatórios</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.sidebarItem} onPress={closeSidebar} accessibilityLabel="Ir para Financeiro">
+              <Text style={styles.sidebarText}>Financeiro</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.sidebarItem} onPress={closeSidebar} accessibilityLabel="Ir para Mensagens">
+              <Text style={styles.sidebarText}>Mensagens</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.sidebarItem} onPress={closeSidebar} accessibilityLabel="Ir para Configurações">
+              <Text style={styles.sidebarText}>Configurações</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.sidebarItem} onPress={closeSidebar} accessibilityLabel="Ir para Equipe">
+              <Text style={styles.sidebarText}>Equipe</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.sidebarItem} onPress={closeSidebar} accessibilityLabel="Ir para Notificações">
+              <Text style={styles.sidebarText}>Notificações</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.sidebarItem} onPress={closeSidebar} accessibilityLabel="Ir para Estoque">
+              <Text style={styles.sidebarText}>Estoque</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.sidebarItem} onPress={closeSidebar} accessibilityLabel="Ir para Feedback">
+              <Text style={styles.sidebarText}>Feedback</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.sidebarItem} onPress={closeSidebar} accessibilityLabel="Ir para Ajuda">
+              <Text style={styles.sidebarText}>Ajuda</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={[styles.sidebarItem, styles.logoutSidebar]}
@@ -181,10 +224,12 @@ export default function HomeScreen() {
                 closeSidebar();
                 logout();
               }}
+              accessibilityLabel="Sair do aplicativo"
             >
               <Text style={[styles.sidebarText, { color: '#fff' }]}>Sair</Text>
             </TouchableOpacity>
           </Animated.View>
+
         </TouchableOpacity>
       </Modal>
     </View>
@@ -264,9 +309,7 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     elevation: 2,
   },
-  emojiSelected: {
-    backgroundColor: '#a5d6a7',
-  },
+  emojiSelected: { backgroundColor: '#a5d6a7' },
   emoji: { fontSize: 28 },
   actionsContainer: {
     flexDirection: 'row',
@@ -310,10 +353,7 @@ const styles = StyleSheet.create({
     fontSize: 13,
     textAlign: 'center',
   },
-  modalOverlay: {
-    flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.3)',
-  },
+  modalOverlay: { flex: 1, backgroundColor: 'rgba(0,0,0,0.3)' },
   sidebar: {
     position: 'absolute',
     top: 0,
@@ -323,24 +363,8 @@ const styles = StyleSheet.create({
     paddingTop: 50,
     paddingHorizontal: 20,
   },
-  sidebarTitle: {
-    fontSize: 22,
-    fontWeight: '700',
-    color: '#fff',
-    marginBottom: 25,
-  },
-  sidebarItem: {
-    paddingVertical: 15,
-    borderBottomColor: '#4caf50',
-    borderBottomWidth: 1,
-  },
-  sidebarText: {
-    fontSize: 18,
-    color: '#c8e6c9',
-  },
-  logoutSidebar: {
-    marginTop: 30,
-    backgroundColor: '#81c784',
-    borderRadius: 8,
-  },
+  sidebarTitle: { fontSize: 22, fontWeight: '700', color: '#fff', marginBottom: 20 },
+  sidebarItem: { marginBottom: 15 },
+  sidebarText: { color: '#fff', fontSize: 18 },
+  logoutSidebar: { marginTop: 30 },
 });
