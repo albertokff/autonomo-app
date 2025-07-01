@@ -159,6 +159,8 @@ export default function HomeScreen() {
               onPress={() => {
                 if (action.label === 'Agenda') {
                   navigation.navigate('AgendamentoForm')
+                } else if (action.label === 'Relatórios') {
+                  navigation.navigate('RelatorioScreen')
                 } else {
                   alert('Funcionalidade ainda não implementada!')
                 }

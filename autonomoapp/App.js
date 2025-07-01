@@ -8,6 +8,7 @@ import ServiceForm from './src/screens/ServiceForm';
 import ClientForm from './src/screens/ClientForm';
 import AgendamentoForm from './src/screens/AgendamentoForm';
 import PendenciasScreen from './src/screens/PendenciasScreen';
+import RelatorioScreen from './src/screens/RelatorioScreen';
 import { TouchableOpacity, Text } from 'react-native';
 
 const Stack = createNativeStackNavigator();
@@ -24,34 +25,11 @@ const AppNavigator = () => {
     {userToken ? (
       <>
         <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen 
-          name="ServiceForm" 
-          component={ServiceForm}
-          options={({ navigation }) => ({
-            title: ''
-          })}
-        />
-        <Stack.Screen
-          name="ClientForm"
-          component={ClientForm}
-          options={({ navigation }) => ({
-            title: ''
-          })}
-        />
-        <Stack.Screen
-          name="PendenciasScreen"
-          component={PendenciasScreen}
-          options={({ navigation }) => ({
-            title: ''
-          })}
-        />
-        <Stack.Screen
-          name="AgendamentoForm"
-          component={AgendamentoForm}
-          options={({ navigation }) => ({
-            title: ''
-          })}
-        />
+        <Stack.Screen name="ServiceForm" component={ServiceForm} options={({ navigation }) => ({title: ''})}/>
+        <Stack.Screen name="ClientForm" component={ClientForm} options={({ navigation }) => ({title: ''})}/>
+        <Stack.Screen name="PendenciasScreen" component={PendenciasScreen} options={({ navigation }) => ({title: ''})}/>
+        <Stack.Screen name="AgendamentoForm" component={AgendamentoForm} options={({ navigation }) => ({title: ''})}/>
+        <Stack.Screen name="RelatorioScreen" component={RelatorioScreen} options={({ navigation }) => ({title: ''})}/>
       </>
     ) : (
       <Stack.Screen name="Login" component={LoginScreen} />
