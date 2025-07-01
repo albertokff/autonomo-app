@@ -135,6 +135,8 @@ export default function HomeScreen() {
                   navigation.navigate('ServiceForm');
                 } else if (action.label === 'Novo Cliente') {
                   navigation.navigate('ClientForm');
+                } else if (action.label === 'Pendências') {
+                  navigation.navigate('PendenciasScreen')
                 } else {
                   alert('Funcionalidade ainda não implementada!');
                 }
