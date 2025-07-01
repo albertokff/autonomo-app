@@ -165,6 +165,8 @@ export default function HomeScreen() {
                   navigation.navigate('FinanceiroScreen')
                 } else if (action.label === 'Mensagem') {
                   navigation.navigate('MensagemScreen')
+                } else if (action.label === 'Notificações') {
+                  navigation.navigate('NotificacaoScreen')
                 } else {
                   alert('Funcionalidade ainda não implementada!')
                 }
