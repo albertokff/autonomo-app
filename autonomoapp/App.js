@@ -9,6 +9,7 @@ import ClientForm from './src/screens/ClientForm';
 import AgendamentoForm from './src/screens/AgendamentoForm';
 import PendenciasScreen from './src/screens/PendenciasScreen';
 import RelatorioScreen from './src/screens/RelatorioScreen';
+import FinanceiroScreen from './src/screens/FinanceiroScreen';
 import { TouchableOpacity, Text } from 'react-native';
 
 const Stack = createNativeStackNavigator();
@@ -30,6 +31,7 @@ const AppNavigator = () => {
         <Stack.Screen name="PendenciasScreen" component={PendenciasScreen} options={({ navigation }) => ({title: ''})}/>
         <Stack.Screen name="AgendamentoForm" component={AgendamentoForm} options={({ navigation }) => ({title: ''})}/>
         <Stack.Screen name="RelatorioScreen" component={RelatorioScreen} options={({ navigation }) => ({title: ''})}/>
+        <Stack.Screen name="FinanceiroScreen" component={FinanceiroScreen} options={({ navigation }) => ({title: ''})}/>
       </>
     ) : (
       <Stack.Screen name="Login" component={LoginScreen} />

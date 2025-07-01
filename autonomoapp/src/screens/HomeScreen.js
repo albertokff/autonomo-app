@@ -161,6 +161,8 @@ export default function HomeScreen() {
                   navigation.navigate('AgendamentoForm')
                 } else if (action.label === 'Relatórios') {
                   navigation.navigate('RelatorioScreen')
+                } else if (action.label === 'Financeiro') {
+                  navigation.navigate('FinanceiroScreen')
                 } else {
                   alert('Funcionalidade ainda não implementada!')
                 }
