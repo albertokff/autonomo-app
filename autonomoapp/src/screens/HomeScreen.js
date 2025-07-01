@@ -38,7 +38,7 @@ const extraActions = [
   { label: 'Agenda', icon: 'event' },
   { label: 'Relatórios', icon: 'bar-chart' },
   { label: 'Financeiro', icon: 'attach-money' },
-  { label: 'Mensagens', icon: 'message' },
+  { label: 'Mensagem', icon: 'message' },
   { label: 'Configurações', icon: 'settings' },
   { label: 'Equipe', icon: 'group' },
   { label: 'Notificações', icon: 'notifications' },
@@ -163,6 +163,8 @@ export default function HomeScreen() {
                   navigation.navigate('RelatorioScreen')
                 } else if (action.label === 'Financeiro') {
                   navigation.navigate('FinanceiroScreen')
+                } else if (action.label === 'Mensagem') {
+                  navigation.navigate('MensagemScreen')
                 } else {
                   alert('Funcionalidade ainda não implementada!')
                 }
