@@ -167,6 +167,8 @@ export default function HomeScreen() {
                   navigation.navigate('MensagemScreen')
                 } else if (action.label === 'Notificações') {
                   navigation.navigate('NotificacaoScreen')
+                } else if (action.label === 'Estoque') {
+                  navigation.navigate('EstoqueScreen')
                 } else {
                   alert('Funcionalidade ainda não implementada!')
                 }

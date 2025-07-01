@@ -12,6 +12,7 @@ import RelatorioScreen from './src/screens/RelatorioScreen';
 import FinanceiroScreen from './src/screens/FinanceiroScreen';
 import MensagemScreen from './src/screens/MensagemScreen';
 import NotificacaoScreen from './src/screens/NotificacaoScreen';
+import EstoqueScreen from './src/screens/EstoqueScreen';
 import { TouchableOpacity, Text } from 'react-native';
 
 const Stack = createNativeStackNavigator();
@@ -36,6 +37,7 @@ const AppNavigator = () => {
         <Stack.Screen name="FinanceiroScreen" component={FinanceiroScreen} options={({ navigation }) => ({title: ''})}/>
         <Stack.Screen name="MensagemScreen" component={MensagemScreen} options={({ navigation }) => ({title: ''})}/>
         <Stack.Screen name="NotificacaoScreen" component={NotificacaoScreen} options={({ navigation }) => ({title: ''})}/>
+        <Stack.Screen name="EstoqueScreen" component={EstoqueScreen} options={({ navigation }) => ({title: ''})}/>
       </>
     ) : (
       <Stack.Screen name="Login" component={LoginScreen} />
