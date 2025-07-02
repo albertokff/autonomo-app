@@ -171,6 +171,8 @@ export default function HomeScreen() {
                   navigation.navigate('EstoqueScreen')
                 } else if (action.label === 'Feedback') {
                   navigation.navigate('FeedbackScreen')
+                } else if (action.label === 'Ajuda') {
+                  navigation.navigate('AjudaScreen')
                 } else {
                   alert('Funcionalidade ainda não implementada!')
                 }
