@@ -19,4 +19,4 @@ jobs:
       - name: Rodar build com EAS
         run: eas build --platform android --non-interactive
         env:
-          EXPO_TOKEN: ${{ secrets.AUTONOMO_APP }}
+          EXPO_TOKEN: ${{ secrets.AUTONOMO_TOKEN }}
