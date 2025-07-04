@@ -15,6 +15,7 @@ import NotificacaoScreen from './src/screens/NotificacaoScreen';
 import EstoqueScreen from './src/screens/EstoqueScreen';
 import FeedbackScreen from './src/screens/FeedbackScreen';
 import AjudaScreen from './src/screens/AjudaScreen';
+import ServiceList from './src/screens/ServiceList';
 import { TouchableOpacity, Text } from 'react-native';
 
 const Stack = createNativeStackNavigator();
@@ -42,6 +43,7 @@ const AppNavigator = () => {
         <Stack.Screen name="EstoqueScreen" component={EstoqueScreen} options={({ navigation }) => ({title: ''})}/>
         <Stack.Screen name="FeedbackScreen" component={FeedbackScreen} options={({ navigation }) => ({title: ''})}/>
         <Stack.Screen name="AjudaScreen" component={AjudaScreen} options={({ navigation }) => ({title: ''})}/>
+        <Stack.Screen name="ServiceList" component={ServiceList} options={({ navigation }) => ({title: ''})}/>
       </>
     ) : (
       <Stack.Screen name="Login" component={LoginScreen} />

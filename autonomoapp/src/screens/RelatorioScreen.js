@@ -21,14 +21,16 @@ export default function RelatorioScreen({ navigation }) {
   const relatoriosDetalhados = [
     { id: '1', titulo: 'Agendamentos por período', descricao: 'Veja todos os agendamentos por data' },
     { id: '2', titulo: 'Faturamento por período', descricao: 'Visualize quanto você faturou em determinado período' },
-    { id: '3', titulo: 'Serviços mais realizados', descricao: 'Confira quais serviços são mais populares' },
-    { id: '4', titulo: 'Clientes mais frequentes', descricao: 'Identifique seus clientes mais assíduos' },
-    { id: '5', titulo: 'Horários mais movimentados', descricao: 'Descubra os horários de pico' },
+    { id: '3', titulo: 'Serviços por período', descricao: 'Confira quais serviços foram cadastrados' },
+    { id: '4', titulo: 'Serviços mais realizados', descricao: 'Confira quais serviços são mais populares' },
+    { id: '5', titulo: 'Clientes mais frequentes', descricao: 'Identifique seus clientes mais assíduos' },
+    { id: '6', titulo: 'Horários mais movimentados', descricao: 'Descubra os horários de pico' },
   ];
 
   const handleDetalheRelatorio = (titulo) => {
-    // Aqui você poderia navegar para outra tela passando o tipo de relatório
-    alert(`Abrir relatório: ${titulo}`);
+    if (titulo === 'Serviços por período') {
+        navigation.navigate('ServiceList')
+    }
   };
 
   return (

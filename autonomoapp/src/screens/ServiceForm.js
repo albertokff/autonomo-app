@@ -1,20 +1,19 @@
-import React, { useState } from 'react';
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  StyleSheet,
-  Alert,
-  ScrollView,
-} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, ScrollView } from 'react-native';
+import { createTable, insertService } from '../database/database';
 
 export default function ServiceForm({ navigation }) {
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
   const [description, setDescription] = useState('');
 
-  const handleSave = () => {
+  useEffect(() => {
+    createTable().catch(error => {
+      console.error('Erro ao criar tabela:', error);
+    });
+  }, []);
+
+  const handleSave = async () => {
     if (!name.trim()) {
       Alert.alert('Erro', 'Informe o nome do serviço');
       return;
@@ -24,9 +23,14 @@ export default function ServiceForm({ navigation }) {
       return;
     }
 
-    // Aqui você pode salvar o serviço (API, storage, etc)
-    Alert.alert('Sucesso', 'Serviço salvo com sucesso!');
-    navigation.goBack();
+    try {
+      await insertService({ name, price: parseFloat(price), description });
+      Alert.alert('Sucesso', 'Serviço salvo com sucesso!');
+      navigation.goBack();
+    } catch (error) {
+      console.error('Erro ao salvar serviço:', error);
+      Alert.alert('Erro', 'Não foi possível salvar o serviço!');
+    }
   };
 
   return (
@@ -76,13 +80,13 @@ export default function ServiceForm({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     padding: 20,
-    backgroundColor: '#ffffff', // fundo branco clean
+    backgroundColor: '#ffffff',
     flexGrow: 1,
   },
   title: {
     fontSize: 24,
     fontWeight: '700',
-    color: '#4CAF50', // verde suave
+    color: '#4CAF50',
     marginBottom: 30,
     textAlign: 'center',
   },
@@ -112,22 +116,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginTop: 30,
   },
-  backButton: {
-    flex: 1,
-    marginRight: 10,
-    backgroundColor: '#e0e0e0',
-    paddingVertical: 14,
-    borderRadius: 10,
-    alignItems: 'center',
-  },
-  backButtonText: {
-    color: '#333',
-    fontSize: 16,
-    fontWeight: '600',
-  },
   saveButton: {
     flex: 1,
-    marginLeft: 10,
     backgroundColor: '#4CAF50',
     paddingVertical: 14,
     borderRadius: 10,
@@ -139,3 +129,4 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
 });
+
