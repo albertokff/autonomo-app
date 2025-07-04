@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, ScrollView } from 'react-native';
-import { createTable, insertService } from '../database/database';
+import { createTableServices, insert } from '../database/database';
 
 export default function ServiceForm({ navigation }) {
   const [name, setName] = useState('');
@@ -8,7 +8,7 @@ export default function ServiceForm({ navigation }) {
   const [description, setDescription] = useState('');
 
   useEffect(() => {
-    createTable().catch(error => {
+    createTableServices().catch(error => {
       console.error('Erro ao criar tabela:', error);
     });
   }, []);
@@ -23,15 +23,22 @@ export default function ServiceForm({ navigation }) {
       return;
     }
 
+    newService();
+  };
+
+  async function newService() {
     try {
-      await insertService({ name, price: parseFloat(price), description });
+      await insert('services', [
+        {name: 'name', value: name},
+        {name: 'price', value: parseFloat(price)},
+        {name: 'description', value: description}]);
+
       Alert.alert('Sucesso', 'Serviço salvo com sucesso!');
-      navigation.goBack();
     } catch (error) {
       console.error('Erro ao salvar serviço:', error);
       Alert.alert('Erro', 'Não foi possível salvar o serviço!');
     }
-  };
+  }
 
   return (
     <ScrollView contentContainerStyle={styles.container}>

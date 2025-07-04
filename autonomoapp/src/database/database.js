@@ -9,7 +9,7 @@ export async function openDb() {
   return dbPromise;
 }
 
-export async function createTable() {
+export async function createTableServices() {
   const db = await openDb();
   await db.execAsync(
     `CREATE TABLE IF NOT EXISTS services (
@@ -21,12 +21,17 @@ export async function createTable() {
   );
 }
 
-export async function insertService({ name, price, description }) {
+export async function insert(table, campos) {
   const db = await openDb();
-  await db.runAsync(
-    'INSERT INTO services (name, price, description) VALUES (?, ?, ?)',
-    [name, price, description]
-  );
+  
+  const columns = campos.map(c => c.name).join(', ');
+  const values = campos.map(c => c.value);
+
+  const placeholders = campos.map(() => '?').join(', ');
+
+  const query = `INSERT INTO ${table} (${columns}) VALUES (${placeholders})`;
+
+  return await db.runAsync(query, values);
 }
 
 export async function getAllServices() {
